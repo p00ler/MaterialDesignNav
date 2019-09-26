@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "698882822931",
+    "firebase_url": "https://ft51-gym5.firebaseio.com",
+    "project_id": "ft51-gym5",
+    "storage_bucket": "ft51-gym5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698882822931:android:a5162a28b8c55202cb40e6",
+        "android_client_info": {
+          "package_name": "com.selyakov.ft51_gym5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698882822931-kaqu8bndkghrv04ojqungktsm4ai7v8e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.selyakov.ft51_gym5",
+            "certificate_hash": "8823cce509dcb4ef44b1fa849d901e0fa1c77b74"
+          }
+        },
+        {
+          "client_id": "698882822931-g22laa1mv89nsc5l7cqrl4fm1i1rrd28.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2A6EEOMTA_9B9vQRsH306eIZ2p9uK4JI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698882822931-g22laa1mv89nsc5l7cqrl4fm1i1rrd28.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
