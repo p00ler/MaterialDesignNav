@@ -7,13 +7,15 @@
     tools:context=".ui.FoodList">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_ist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="78dp"
         android:text="Button"
+        android:onClick="addListener"
         app:layout_constraintEnd_toEndOf="@+id/checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        tools:ignore="OnClick" />
 
     <CheckBox
         android:id="@+id/checkBox"

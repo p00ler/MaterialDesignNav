@@ -29,6 +29,8 @@ public class EmailPasswordActivity extends BaseActivity implements
 
     private FirebaseAuth mAuth;
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,6 +127,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                     user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
+
             findViewById(R.id.emailPasswordButtons).setVisibility(View.GONE);
             findViewById(R.id.emailPasswordFields).setVisibility(View.GONE);
             findViewById(R.id.signedInButtons).setVisibility(View.VISIBLE);
@@ -148,4 +151,5 @@ public class EmailPasswordActivity extends BaseActivity implements
             signOut();
         }
     }
+
 }

@@ -1,7 +1,9 @@
 package com.selyakov.ft51_gym5;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +16,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.mikepenz.iconics.typeface.FontAwesome;
@@ -28,6 +32,10 @@ import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 import com.selyakov.ft51_gym5.ui.BlankFragment;
 import com.selyakov.ft51_gym5.ui.FoodList;
 
+import java.util.Objects;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -35,37 +43,43 @@ public class MainActivity extends AppCompatActivity {
 
     private Drawer.Result drawerResult = null;
     private Long id = null;
-    /*private FirebaseDatabase dbase;
+    private FirebaseDatabase dbase;
     private DatabaseReference f_ref;
+    private FirebaseAuth mAuth;
     CheckBox checkBox;
-    Button btn1;*/
+    private Button btn;
+    private FirebaseUser cur_user;
+    private String displayName, email;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_food_list);
+        btn = (Button)findViewById(R.id.button_ist);
         setContentView(R.layout.activity_main);
 
         //Инициализируем Firebase Database
-        /*dbase = FirebaseDatabase.getInstance();
-        f_ref = dbase.getReference("classes");*/
+        dbase = FirebaseDatabase.getInstance();
+        f_ref = dbase.getReference("classes");
+
 
         // Инициализируем Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        /*checkBox = (CheckBox)findViewById(R.id.checkBox);
-        btn1 = (Button)findViewById(R.id.button);
+
+        checkBox = (CheckBox)findViewById(R.id.checkBox);
+
+        FirebaseUser user = mAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            displayName = user.getDisplayName();
+            email = mAuth.getInstance().getCurrentUser().getEmail().replace(".","");
+            }
 
 
-        btn1.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        onSendClick();
-                    }
-                }
-        );*/
 
         // Инициализируем Navigation Drawer
         drawerResult = new Drawer()
@@ -128,6 +142,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }).build();
+
+
     }
 
     @Override
@@ -141,8 +157,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-/*    public void onSendClick(){
-        f_ref.push().setValue("yeap");
-    }*/
+    public void onSendClick(){
+        f_ref.child(email).push().setValue(displayName);
+    }
 
+
+    public void addListener(View v){
+        Toast.makeText(MainActivity.this,"WORK BLYAT", Toast.LENGTH_SHORT).show();
+        onSendClick();
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+    }
 }
