@@ -1,19 +1,16 @@
 package com.selyakov.ft51_gym5;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,10 +29,8 @@ import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 import com.selyakov.ft51_gym5.ui.BlankFragment;
 import com.selyakov.ft51_gym5.ui.FoodList;
 
-import java.util.Objects;
+import java.io.Serializable;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -44,40 +39,42 @@ public class MainActivity extends AppCompatActivity {
     private Drawer.Result drawerResult = null;
     private Long id = null;
     private FirebaseDatabase dbase;
-    private DatabaseReference f_ref;
+    private DatabaseReference f_ref, test;
     private FirebaseAuth mAuth;
-    CheckBox checkBox;
+    public CheckBox checkBox;
     private Button btn;
     private FirebaseUser cur_user;
-    private String displayName, email;
+    private String displayName, email, chk;
+    private FirebaseUser user = mAuth.getInstance().getCurrentUser();
+
+    static class Item implements Serializable {
+        public String name;
+        public String status;
+
+        public Item() {
+        }
+
+        Item(String name, String status) {
+            this.name = name;
+            this.status = status;
+        }
+    }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_food_list);
-        btn = (Button)findViewById(R.id.button_ist);
         setContentView(R.layout.activity_main);
 
         //Инициализируем Firebase Database
         dbase = FirebaseDatabase.getInstance();
-        f_ref = dbase.getReference("classes");
+        f_ref = dbase.getReference("peoples");
 
 
         // Инициализируем Toolbar
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        checkBox = (CheckBox)findViewById(R.id.checkBox);
-
-        FirebaseUser user = mAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            // User is signed in
-            displayName = user.getDisplayName();
-            email = mAuth.getInstance().getCurrentUser().getEmail().replace(".","");
-            }
 
 
 
@@ -157,19 +154,113 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void onSendClick(){
-        f_ref.child(email).push().setValue(displayName);
+
+    public void onCheckboxClicked(View view) {
+
+        final String name = "breakfast";
+        final String status = "+";
+
+        Item item = new Item(name, status);
+
+        user = mAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // User is signed in
+            displayName = user.getDisplayName();
+            email = mAuth.getInstance().getCurrentUser().getEmail().replace(".","");
+            test = dbase.getInstance().getReference().getRoot();
+        }
+        f_ref.child(email).removeValue();
+
+        boolean checked = ((CheckBox) view).isChecked();
+
+        switch(view.getId()) {
+
+            case R.id.checkBox1:
+                if (checked && user != null){
+                    f_ref.child(email).child("monday").push().setValue(item);
+                    break;
+                }
+                else if (checked){
+                    Toast.makeText(MainActivity.this,"Авторизуйтесь", Toast.LENGTH_SHORT).show();
+                    break;
+                }else{
+                    if(user != null)
+                    f_ref.child(email).child("monday").removeValue();
+                    break;
+                }
+
+            case R.id.checkBox2:
+                if (checked && user != null){
+                    f_ref.child(email).child("tuesday").push().setValue(item);
+                    break;
+                }
+                else if (checked){
+                    Toast.makeText(MainActivity.this,"Авторизуйтесь", Toast.LENGTH_SHORT).show();
+                    break;
+                }
+                else{
+                    if(user != null)
+                    f_ref.child(email).child("tuesday").removeValue();
+                    break;
+                }
+
+            case R.id.checkBox3:
+                if (checked && user != null){
+                    f_ref.child(email).child("wednesday").push().setValue(item);
+                    break;
+                }
+                else if (checked){
+                    Toast.makeText(MainActivity.this,"Авторизуйтесь", Toast.LENGTH_SHORT).show();
+                    break;
+                }else{
+                    if(user != null)
+                    f_ref.child(email).child("wednesday").removeValue();
+                    break;
+                }
+
+            case R.id.checkBox4:
+                if (checked && user != null){
+                    f_ref.child(email).child("thursday").push().setValue(item);
+                    break;
+                }
+                else if (checked){
+                    Toast.makeText(MainActivity.this,"Авторизуйтесь", Toast.LENGTH_SHORT).show();
+                    break;
+                }else{
+                    if(user != null)
+                    f_ref.child(email).child("thursday").removeValue();
+                    break;
+                }
+
+            case R.id.checkBox5:
+                if (checked && user != null){
+                    f_ref.child(email).child("friday").push().setValue(item);
+                    break;
+                }
+                else if (checked){
+                    Toast.makeText(MainActivity.this,"Авторизуйтесь", Toast.LENGTH_SHORT).show();
+                    break;
+                }else{
+                    if(user != null)
+                    f_ref.child(email).child("friday").removeValue();
+                    break;
+                }
+
+            case R.id.checkBox6:
+                if (checked && user != null){
+                    f_ref.child(email).child("saturday").push().setValue(item);
+                    break;
+                }
+                else if (checked){
+                    Toast.makeText(MainActivity.this,"Авторизуйтесь", Toast.LENGTH_SHORT).show();
+                    break;
+                }else{
+                    if(user != null)
+                    f_ref.child(email).child("saturday").removeValue();
+                    break;
+                }
+        }
+
     }
 
-
-    public void addListener(View v){
-        Toast.makeText(MainActivity.this,"WORK BLYAT", Toast.LENGTH_SHORT).show();
-        onSendClick();
-    }
-
-    @Override
-    protected void onResume(){
-        super.onResume();
-
-    }
 }

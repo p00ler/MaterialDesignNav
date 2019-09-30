@@ -1,15 +1,18 @@
 package com.selyakov.ft51_gym5.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -23,27 +26,32 @@ import com.selyakov.ft51_gym5.R;
 
 import java.util.Objects;
 
+import static android.app.Activity.RESULT_OK;
 
-public class FoodList extends Fragment {
+public class FoodList extends Fragment   {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
+
     private String mParam1;
     private String mParam2;
+    private FirebaseDatabase dbase;
+    private DatabaseReference f_ref;
 
-    public FirebaseAuth mAuth;
+    private String displayName, email, chk;
 
-    private DatabaseReference dref;
-    private FirebaseDatabase fdb;
-
-    private Button butn;
 
     private OnFragmentInteractionListener mListener;
 
     public FoodList() {
         // Required empty public constructor
     }
+
+
+
 
 
     public static FoodList newInstance(String param1, String param2) {
@@ -61,6 +69,15 @@ public class FoodList extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+
+        dbase = FirebaseDatabase.getInstance();
+        f_ref = dbase.getReference("classes");
+
+        user = mAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            displayName = user.getDisplayName();
+            email = mAuth.getInstance().getCurrentUser().getEmail().replace(".","");
         }
     }
 
@@ -87,5 +104,4 @@ public class FoodList extends Fragment {
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);
     }
-
 }
