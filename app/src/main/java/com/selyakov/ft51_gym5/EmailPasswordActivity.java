@@ -1,12 +1,11 @@
 package com.selyakov.ft51_gym5;
 
-import android.content.Context;
-import android.inputmethodservice.Keyboard;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
+
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -89,7 +88,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                         }
 
                         if (!task.isSuccessful()) {
-                            mStatusTextView.setText(R.string.auth_failed);
+                            mStatusTextView.setText(R.string.auth_fail);
                         }
                         hideProgressDialog();
                     }
@@ -129,6 +128,7 @@ public class EmailPasswordActivity extends BaseActivity implements
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
+
 
             findViewById(R.id.emailPasswordButtons).setVisibility(View.GONE);
             findViewById(R.id.emailPasswordFields).setVisibility(View.GONE);

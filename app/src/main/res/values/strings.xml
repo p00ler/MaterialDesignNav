@@ -84,5 +84,7 @@
     <string name="title_activity_nav_act">nav_act</string>
     <string name="wait_pd">Подождите...</string>
     <string name="auth_fail">Авторизация провалена</string>
+    <string name="scheldure">Мероприятия</string>
+    <string name="contacts">Контакты</string>
 </resources>
 
