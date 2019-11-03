@@ -131,7 +131,7 @@ public class EmailPasswordActivity extends BaseActivity implements
 
 
             findViewById(R.id.emailPasswordButtons).setVisibility(View.GONE);
-            findViewById(R.id.emailPasswordFields).setVisibility(View.GONE);
+            findViewById(R.id.fields).setVisibility(View.GONE);
             findViewById(R.id.signedInButtons).setVisibility(View.VISIBLE);
 
         } else {
@@ -139,7 +139,7 @@ public class EmailPasswordActivity extends BaseActivity implements
             mDetailTextView.setText(null);
 
             findViewById(R.id.emailPasswordButtons).setVisibility(View.VISIBLE);
-            findViewById(R.id.emailPasswordFields).setVisibility(View.VISIBLE);
+            findViewById(R.id.fields).setVisibility(View.VISIBLE);
             findViewById(R.id.signedInButtons).setVisibility(View.GONE);
         }
     }

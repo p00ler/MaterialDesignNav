@@ -1,6 +1,7 @@
 package com.selyakov.ft51_gym5;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.google.gson.Gson;
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
@@ -30,6 +32,7 @@ import com.selyakov.ft51_gym5.ui.BlankFragment;
 import com.selyakov.ft51_gym5.ui.FoodList;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String display, email;
     private FirebaseUser user = mAuth.getInstance().getCurrentUser();
+    protected String mon, tue, wed, thu, fri, sat, type;
+
 
     static class Item implements Serializable {
         public String name;
@@ -58,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    String JSONobject;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,11 +72,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new FoodList()).commit();
 
+
         //Инициализируем Firebase Database
         dbase = FirebaseDatabase.getInstance();
         f_ref = dbase.getReference("peoples");
         display = "dinner";
 
+        mon="0";tue="0";wed="0";thu="0";fri="0";sat="0";
 
         // Инициализируем Toolbar
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -141,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }).build();
-
+        type="2";
 
     }
 
@@ -170,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void focusCheck() {
+
         CheckBox cb1 = (CheckBox)findViewById(R.id.checkBox1);
         CheckBox cb2 = (CheckBox)findViewById(R.id.checkBox2);
         CheckBox cb3 = (CheckBox)findViewById(R.id.checkBox3);
@@ -183,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
         cb4.setChecked(false);
         cb5.setChecked(false);
         cb6.setChecked(false);
+        mon="0";tue="0";wed="0";thu="0";fri="0";sat="0";
     }
 
     public void sendDB(Boolean checked, String email, String day, Item item){
@@ -200,47 +211,83 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCheckboxClicked(View view) {
 
-        final String name = display;
+        CheckBox cb1 = (CheckBox)findViewById(R.id.checkBox1);
+        CheckBox cb2 = (CheckBox)findViewById(R.id.checkBox2);
+        CheckBox cb3 = (CheckBox)findViewById(R.id.checkBox3);
+        CheckBox cb4 = (CheckBox)findViewById(R.id.checkBox4);
+        CheckBox cb5 = (CheckBox)findViewById(R.id.checkBox5);
+        CheckBox cb6 = (CheckBox)findViewById(R.id.checkBox6);
 
-        final String status = "+";
-
-        Item item = new Item(name, status);
-
-        user = mAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-            email = mAuth.getInstance().getCurrentUser().getEmail().replace(".","");
+            email = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser().getEmail()).replace(".","");
         }
 
-
-        boolean checked = ((CheckBox) view).isChecked();
+        JSONobject = new Gson().toJson(email);
 
         switch(view.getId()) {
 
             case R.id.checkBox1:
-                sendDB(checked,email,"monday",item);
+                if(cb1.isChecked()){
+                    mon="1";
+                }else{
+                    mon="0";
+                }
                 break;
 
             case R.id.checkBox2:
-                sendDB(checked,email,"tuesday",item);
+                if(cb2.isChecked()){
+                    tue="1";
+                }else{
+                    tue="0";
+                }
                 break;
 
             case R.id.checkBox3:
-                sendDB(checked,email,"wednesday",item);
+                if(cb3.isChecked()){
+                    wed="1";
+                }else{
+                    wed="0";
+                }
                 break;
 
             case R.id.checkBox4:
-                sendDB(checked,email,"thursday",item);
+                if(cb4.isChecked()){
+                    thu="1";
+                }else{
+                    thu="0";
+                }
                 break;
 
             case R.id.checkBox5:
-                sendDB(checked,email,"friday",item);
+                if(cb5.isChecked()){
+                    fri="1";
+                }else{
+                    fri="0";
+                }
                 break;
 
             case R.id.checkBox6:
-                sendDB(checked,email,"saturday",item);
+                if(cb6.isChecked()){
+                    sat="1";
+                }else{
+                    sat="0";
+                }
                 break;
         }
 
     }
 
+    public void onSendClick(View v){
+        user = mAuth.getInstance().getCurrentUser();
+        try{
+            if(user != null){
+                new GetData(this, type, JSONobject, mon, tue, wed, thu, fri, sat).execute();
+            }
+            else{Toast.makeText(MainActivity.this,"Авторизуйтесь", Toast.LENGTH_SHORT).show();}
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

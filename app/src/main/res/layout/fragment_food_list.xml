@@ -4,13 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/berry"
     tools:context=".ui.FoodList">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="234dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="62dp"
+        android:background="@drawable/style_button"
+        android:onClick="onSendClick"
+        android:text="ОТПРАВИТЬ"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="onClick"/>
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="253dp"
+        android:layout_height="299dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="85dp"
         android:layout_marginEnd="150dp"
@@ -18,20 +34,22 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <CheckBox
             android:id="@+id/checkBox1"
             style="@style/Widget.AppCompat.CompoundButton.CheckBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="#4CAF50"
+            android:buttonTint="#03A9F4"
             android:checked="false"
             android:fontFamily="sans-serif-light"
             android:onClick="onCheckboxClicked"
             android:text="Понедельник"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="28sp"
             android:typeface="monospace"
             tools:ignore="OnClick" />
@@ -40,12 +58,12 @@
             android:id="@+id/checkBox2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="#4CAF50"
+            android:buttonTint="#03A9F4"
             android:checked="false"
             android:fontFamily="sans-serif-light"
             android:onClick="onCheckboxClicked"
             android:text="Вторник"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="28sp"
             android:typeface="monospace"
             tools:ignore="OnClick" />
@@ -54,12 +72,12 @@
             android:id="@+id/checkBox3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="#4CAF50"
+            android:buttonTint="#03A9F4"
             android:checked="false"
             android:fontFamily="sans-serif-light"
             android:onClick="onCheckboxClicked"
             android:text="Среда"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="28sp"
             android:typeface="monospace"
             tools:ignore="OnClick" />
@@ -68,12 +86,12 @@
             android:id="@+id/checkBox4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="#4CAF50"
+            android:buttonTint="#03A9F4"
             android:checked="false"
             android:fontFamily="sans-serif-light"
             android:onClick="onCheckboxClicked"
             android:text="Четверг"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="28sp"
             android:typeface="monospace"
             tools:ignore="OnClick" />
@@ -82,12 +100,12 @@
             android:id="@+id/checkBox5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="#4CAF50"
+            android:buttonTint="#03A9F4"
             android:checked="false"
             android:fontFamily="sans-serif-light"
             android:onClick="onCheckboxClicked"
             android:text="Пятница"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="28sp"
             android:typeface="monospace"
             tools:ignore="OnClick" />
@@ -96,12 +114,12 @@
             android:id="@+id/checkBox6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="#4CAF50"
+            android:buttonTint="#03A9F4"
             android:checked="false"
             android:fontFamily="sans-serif-light"
             android:onClick="onCheckboxClicked"
             android:text="Суббота"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="28sp"
             android:typeface="monospace"
             tools:ignore="OnClick" />
@@ -110,8 +128,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="388dp"
-        android:layout_height="299dp"
+        android:layout_width="387dp"
+        android:layout_height="268dp"
         android:layout_marginStart="3dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="19dp"
@@ -120,17 +138,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:text="Меню"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="#000000"
-            android:textSize="30sp" />
 
         <TableLayout
             android:layout_width="match_parent"
@@ -283,6 +290,17 @@
 
         </TableLayout>
 
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Меню"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="30sp" />
+
     </LinearLayout>
 
     <RadioGroup
@@ -298,8 +316,10 @@
             android:id="@+id/radioButton3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="#2196F3"
             android:onClick="onRadioChange"
             android:text="Завтрак"
+            android:textColor="#000000"
             android:textSize="20sp"
             tools:ignore="OnClick" />
 
@@ -307,9 +327,11 @@
             android:id="@+id/radioButton2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="#2196F3"
             android:checked="true"
             android:onClick="onRadioChange"
             android:text="Обед"
+            android:textColor="#000000"
             android:textSize="20sp"
             tools:ignore="OnClick" />
 
@@ -317,8 +339,10 @@
             android:id="@+id/radioButton1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="#2196F3"
             android:onClick="onRadioChange"
             android:text="Полдник"
+            android:textColor="#000000"
             android:textSize="20sp"
             tools:ignore="OnClick" />
     </RadioGroup>
