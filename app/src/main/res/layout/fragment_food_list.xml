@@ -8,24 +8,343 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="78dp"
-        android:text="Button"
-        app:layout_constraintEnd_toEndOf="@+id/checkBox"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        android:layout_width="234dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="62dp"
+        android:layout_marginEnd="62dp"
+        android:background="@drawable/style_button"
+        android:onClick="onSendClick"
+        android:text="ОТПРАВИТЬ"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="onClick"/>
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="98dp"
-        android:layout_marginTop="56dp"
-        android:buttonTint="#0037FF"
-        android:text="CheckBox"
-        android:textColor="#000000"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="253dp"
+        android:layout_height="299dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="85dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="350dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <CheckBox
+            android:id="@+id/checkBox1"
+            style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#03A9F4"
+            android:checked="false"
+            android:fontFamily="sans-serif-light"
+            android:onClick="onCheckboxClicked"
+            android:text="Понедельник"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            android:typeface="monospace"
+            tools:ignore="OnClick" />
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#03A9F4"
+            android:checked="false"
+            android:fontFamily="sans-serif-light"
+            android:onClick="onCheckboxClicked"
+            android:text="Вторник"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            android:typeface="monospace"
+            tools:ignore="OnClick" />
+
+        <CheckBox
+            android:id="@+id/checkBox3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#03A9F4"
+            android:checked="false"
+            android:fontFamily="sans-serif-light"
+            android:onClick="onCheckboxClicked"
+            android:text="Среда"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            android:typeface="monospace"
+            tools:ignore="OnClick" />
+
+        <CheckBox
+            android:id="@+id/checkBox4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#03A9F4"
+            android:checked="false"
+            android:fontFamily="sans-serif-light"
+            android:onClick="onCheckboxClicked"
+            android:text="Четверг"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            android:typeface="monospace"
+            tools:ignore="OnClick" />
+
+        <CheckBox
+            android:id="@+id/checkBox5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#03A9F4"
+            android:checked="false"
+            android:fontFamily="sans-serif-light"
+            android:onClick="onCheckboxClicked"
+            android:text="Пятница"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            android:typeface="monospace"
+            tools:ignore="OnClick" />
+
+        <CheckBox
+            android:id="@+id/checkBox6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#03A9F4"
+            android:checked="false"
+            android:fontFamily="sans-serif-light"
+            android:onClick="onCheckboxClicked"
+            android:text="Суббота"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            android:typeface="monospace"
+            tools:ignore="OnClick" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="387dp"
+        android:layout_height="268dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="19dp"
+        android:background="@drawable/style_button"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Завтрак"
+                    android:textAlignment="textStart"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Какао"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Каша пшенная"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Обед"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Щи из свежей капусты"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Котлета из мяса индейки"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Картофель отварной"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:text="Сок мультифруктовый"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="italic" />
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Меню"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="172dp"
+        android:layout_height="133dp"
+        android:layout_marginStart="236dp"
+        android:layout_marginTop="90dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#2196F3"
+            android:onClick="onRadioChange"
+            android:text="Завтрак"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            tools:ignore="OnClick" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#2196F3"
+            android:checked="true"
+            android:onClick="onRadioChange"
+            android:text="Обед"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            tools:ignore="OnClick" />
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="#2196F3"
+            android:onClick="onRadioChange"
+            android:text="Полдник"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            tools:ignore="OnClick" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

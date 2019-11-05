@@ -1,9 +1,11 @@
 package com.selyakov.ft51_gym5;
 
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +30,8 @@ public class EmailPasswordActivity extends BaseActivity implements
     private EditText mPasswordField;
 
     private FirebaseAuth mAuth;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,7 +88,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                         }
 
                         if (!task.isSuccessful()) {
-                            mStatusTextView.setText(R.string.auth_failed);
+                            mStatusTextView.setText(R.string.auth_fail);
                         }
                         hideProgressDialog();
                     }
@@ -125,8 +129,9 @@ public class EmailPasswordActivity extends BaseActivity implements
                     user.getEmail()));
             mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
 
+
             findViewById(R.id.emailPasswordButtons).setVisibility(View.GONE);
-            findViewById(R.id.emailPasswordFields).setVisibility(View.GONE);
+            findViewById(R.id.fields).setVisibility(View.GONE);
             findViewById(R.id.signedInButtons).setVisibility(View.VISIBLE);
 
         } else {
@@ -134,7 +139,7 @@ public class EmailPasswordActivity extends BaseActivity implements
             mDetailTextView.setText(null);
 
             findViewById(R.id.emailPasswordButtons).setVisibility(View.VISIBLE);
-            findViewById(R.id.emailPasswordFields).setVisibility(View.VISIBLE);
+            findViewById(R.id.fields).setVisibility(View.VISIBLE);
             findViewById(R.id.signedInButtons).setVisibility(View.GONE);
         }
     }
@@ -148,4 +153,5 @@ public class EmailPasswordActivity extends BaseActivity implements
             signOut();
         }
     }
+
 }
