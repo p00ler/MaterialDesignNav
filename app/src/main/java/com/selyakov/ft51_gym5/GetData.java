@@ -4,27 +4,20 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class GetData extends AsyncTask {
 
     private Context context;
-    private String email;
-    protected String mon, tue, wed, thu, fri, sat, type;
-    public String data;
+    private String email, ResponseServer;
+    private String mon, tue, wed, thu, fri, sat, type;
 
     public GetData(Context context, String type, String email, String mon, String tue, String wed, String thu, String fri, String sat){
 
@@ -39,14 +32,13 @@ public class GetData extends AsyncTask {
         this.type = type;
     }
 
-    private String[] name_of_param = {"type","mon","tue","wed","thu","fri","sat"};
+    private String[] name_of_param = {"type","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
 
 
     @Override
     protected Object doInBackground(Object[] objects) {
         String link ="https://helpio.000webhostapp.com/index.php";
         HttpURLConnection connection = null;
-        String ResponseServer = null;
         String[] params = {type,mon,tue,wed,thu,fri,sat};
         try {
             Log.d("Info:","Start connection...");
@@ -64,7 +56,6 @@ public class GetData extends AsyncTask {
                 param+="&"+name_of_param[i]+"="+params[i];
                 i++;
             }
-            Log.d("PARAMS", param);
 
             DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
 
@@ -74,19 +65,19 @@ public class GetData extends AsyncTask {
             writer.close();
             wr.close();
 
-            //Server answer
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             String input_line;
             StringBuffer response = new StringBuffer();
 
             while ((input_line = reader.readLine()) != null){
                 response.append(input_line);
-            }reader.close();Log.d("Info:","While ended");
+            }reader.close();
 
             connection.connect();
 
             ResponseServer = response.toString();
-            Log.d("RESPONSE:",ResponseServer);
+
+            return ResponseServer;
 
 
 
@@ -94,24 +85,12 @@ public class GetData extends AsyncTask {
             e.printStackTrace();
             try {
                 Log.d("ERROR:",Integer.toString(connection.getResponseCode()));
+                Global.error_code = connection.getResponseCode();
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
             return null;
         }
-        return ResponseServer;
-
-    }
-
-    protected void onPostExecute(String message) {
-        Type type = new TypeToken<String>() {
-        }.getType();
-
-        Gson gson = new Gson();
-
-        String str = gson.fromJson(message, type);
-
-        Log.d("P", str);
     }
 
 }

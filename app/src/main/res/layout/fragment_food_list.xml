@@ -6,11 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".ui.FoodList">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="441dp"
+        android:fontFamily="@font/oswald"
+        android:text="Шаблон питания"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/button"
-        android:layout_width="234dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="62dp"
+        android:layout_width="296dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="62dp"
         android:background="@drawable/style_button"
         android:onClick="onSendClick"
@@ -19,25 +37,27 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="onClick"/>
+        app:layout_constraintVertical_bias="0.588"
+        tools:ignore="onClick" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="253dp"
-        android:layout_height="299dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="221dp"
+        android:layout_height="236dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="85dp"
-        android:layout_marginEnd="150dp"
         android:layout_marginBottom="350dp"
+        android:background="@drawable/style_stroke"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.353">
 
         <CheckBox
             android:id="@+id/checkBox1"
@@ -129,15 +149,16 @@
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="387dp"
-        android:layout_height="268dp"
-        android:layout_marginStart="3dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="19dp"
         android:background="@drawable/style_button"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -305,10 +326,12 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="172dp"
-        android:layout_height="133dp"
-        android:layout_marginStart="236dp"
-        android:layout_marginTop="90dp"
+        android:layout_width="169dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="152dp"
+        android:background="@drawable/style_stroke"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.916"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
