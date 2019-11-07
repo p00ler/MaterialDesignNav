@@ -13,13 +13,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="95dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="441dp"
-        android:fontFamily="@font/oswald"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif-black"
         android:text="Шаблон питания"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +29,6 @@
         android:id="@+id/button"
         android:layout_width="296dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="62dp"
         android:background="@drawable/style_button"
         android:onClick="onSendClick"
         android:text="ОТПРАВИТЬ"
@@ -37,18 +36,17 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.918"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.588"
+        app:layout_constraintVertical_bias="0.609"
         tools:ignore="onClick" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="221dp"
         android:layout_height="236dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="85dp"
+        android:layout_marginStart="5dp"
         android:layout_marginBottom="350dp"
         android:background="@drawable/style_stroke"
         android:orientation="vertical"
@@ -57,7 +55,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.353">
+        app:layout_constraintVertical_bias="0.85">
 
         <CheckBox
             android:id="@+id/checkBox1"
@@ -148,17 +146,17 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="387dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/style_button"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/button">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -173,11 +171,12 @@
                     android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-medium"
                     android:text="Завтрак"
                     android:textAlignment="textStart"
                     android:textColor="#000000"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textStyle="italic" />
             </TableRow>
 
             <TableRow
@@ -192,7 +191,7 @@
                     android:id="@+id/textView15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-medium"
                     android:text="Какао"
                     android:textColor="#000000"
                     android:textSize="18sp"
@@ -211,7 +210,7 @@
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-medium"
                     android:text="Каша пшенная"
                     android:textColor="#000000"
                     android:textSize="18sp"
@@ -226,10 +225,11 @@
                     android:id="@+id/textView13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-medium"
                     android:text="Обед"
                     android:textColor="#000000"
-                    android:textSize="24sp" />
+                    android:textSize="24sp"
+                    android:textStyle="italic" />
 
             </TableRow>
 
@@ -245,7 +245,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-medium"
                     android:text="Щи из свежей капусты"
                     android:textColor="#000000"
                     android:textSize="18sp"
@@ -264,7 +264,7 @@
                     android:id="@+id/textView11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-medium"
                     android:text="Котлета из мяса индейки"
                     android:textColor="#000000"
                     android:textSize="18sp"
@@ -283,7 +283,7 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-medium"
                     android:text="Картофель отварной"
                     android:textColor="#000000"
                     android:textSize="18sp"
@@ -302,7 +302,7 @@
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
+                    android:fontFamily="sans-serif-medium"
                     android:text="Сок мультифруктовый"
                     android:textColor="#000000"
                     android:textSize="18sp"
@@ -326,14 +326,16 @@
 
     <RadioGroup
         android:id="@+id/radioGroup"
-        android:layout_width="169dp"
-        android:layout_height="102dp"
-        android:layout_marginTop="152dp"
+        android:layout_width="159dp"
+        android:layout_height="103dp"
+        android:layout_marginEnd="1dp"
         android:background="@drawable/style_stroke"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.916"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.0">
 
         <RadioButton
             android:id="@+id/radioButton3"
