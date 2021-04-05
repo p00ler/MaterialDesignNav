@@ -17,12 +17,11 @@ public class CheckAvailability extends AsyncTask {
 
     @Override
     protected Object doInBackground(Object[] objects) {
-        String link ="https://helpio.000webhostapp.com/get.php";
+        String link ="https://helpio.000webhostapp.com/get.php"; // ToDo: Поменять сервер
         try {
             connection = (HttpURLConnection) new URL(link).openConnection();
             connection.setConnectTimeout(300);
             Global.error_code = connection.getResponseCode();
-
         }
         catch (Exception e){
             e.printStackTrace();

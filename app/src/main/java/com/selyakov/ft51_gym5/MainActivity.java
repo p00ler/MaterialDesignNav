@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); // ToDo: Адаптивность XML
         getSupportFragmentManager().beginTransaction().replace(R.id.container, new FoodList()).commit();
 
         mon="0";tue="0";wed="0";thu="0";fri="0";sat="0";
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Инициализируем Navigation Drawer
-        drawerResult = new Drawer()
+        drawerResult = new Drawer() // ToDo: МЕНЯЕМ БИБЛИОТЕКУ АНИМАЦИИ
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .withActionBarDrawerToggle(true)
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         CheckBox cb5 = findViewById(R.id.checkBox5);
         CheckBox cb6 = findViewById(R.id.checkBox6);
 
-        getUserEmail(); // Это who? Узнаем логин для формирования зароса
+        getUserEmail(); // Это who? Узнаем логин для формирования запроса
 
         JSONobject = new Gson().toJson(email); //ToDo: Заменить GSON библиотеку на другую
 
@@ -270,6 +270,4 @@ public class MainActivity extends AppCompatActivity {
             email = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser().getEmail()).replace(".", "");
         }
     }
-
-
 }
