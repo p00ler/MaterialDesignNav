@@ -17,11 +17,12 @@ public class GetData extends AsyncTask {
 
     private Context context;
     private String email, ResponseServer;
-    private String mon, tue, wed, thu, fri, sat, type;
+    private String mon, tue, wed, thu, fri, sat, type; // Ммммм, асинхронная передача JSON через HTTP запросы, пока пока безопаность
+    // ToDo: Подогнать шифрование
 
     public GetData(Context context, String type, String email, String mon, String tue, String wed, String thu, String fri, String sat){
 
-        this.context = context;
+        this.context = context; // Получаем все дерьмо из глобального стека данных для формирования запроса
         this.email = email;
         this.mon = mon;
         this.tue = tue;
@@ -37,20 +38,20 @@ public class GetData extends AsyncTask {
 
     @Override
     protected Object doInBackground(Object[] objects) {
-        String link ="https://helpio.000webhostapp.com/index.php";
-        HttpURLConnection connection = null;
+        String link ="https://helpio.000webhostapp.com/index.php"; // ToDo: Найти сервер...
+        HttpURLConnection connection = null; // Открываем поток для сервера
         String[] params = {type,mon,tue,wed,thu,fri,sat};
-        try {
-            Log.d("Info:","Start connection...");
-            connection = (HttpURLConnection) new URL(link).openConnection();
+        try { // Без try\catch в ассинхронке никуда
+            Log.d("Info:","Start connection..."); // Дебаг
+            connection = (HttpURLConnection) new URL(link).openConnection(); // Открываем новый поток
 
-            connection.setRequestMethod("POST");
+            connection.setRequestMethod("POST"); // Задаем ПОСТ запрос на сервер
 
             connection.setUseCaches(false);
-            connection.setConnectTimeout(500);
+            connection.setConnectTimeout(500); // Костыль?? ToDo: Избавиться от простоя ядра при запросе
             connection.setReadTimeout(500);
 
-            String param = "email" + "=" + email;
+            String param = "email" + "=" + email; // ToDo: ПИЗДЕЦ, 7 ЗАПРОСОВ ВМЕСТО ОДНОГО, Я ПЬЯНЫЙ ЭТО ПИСАЛ?
             int i=0;
             while(i!=7){
                 param+="&"+name_of_param[i]+"="+params[i];

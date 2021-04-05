@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                                     break;
                             }
                         }
-                        if (drawerItem instanceof Badgeable) {
+                        if (drawerItem instanceof Badgeable) { // Хз зачем этот фрагмент
                             Badgeable badgeable = (Badgeable) drawerItem;
                             if (badgeable.getBadge() != null) {
                                 try {
@@ -137,12 +137,12 @@ public class MainActivity extends AppCompatActivity {
         if (drawerResult.isDrawerOpen()) {
             drawerResult.closeDrawer();
         } else {
-            super.onBackPressed();
+            super.onBackPressed(); // Ляяя, супер-классы
         }
     }
 
     public void onRadioChange(View view) {
-        getUserEmail();
+        getUserEmail(); //ToDo: Добавить глобальную переменную для мыла пользователя
         switch (view.getId()) {
             case R.id.radioButton1:
                 type = "1";
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.radioButton3:
                 type = "3";
         }
-        focusCheck();
+        focusCheck(); // Лол, хз че это =(
     }
 
 
@@ -182,18 +182,18 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onCheckboxClicked(View view) {
-        CheckBox cb1 = findViewById(R.id.checkBox1);
+        CheckBox cb1 = findViewById(R.id.checkBox1); // Иннициализация чек-боксов на UI
         CheckBox cb2 = findViewById(R.id.checkBox2);
         CheckBox cb3 = findViewById(R.id.checkBox3);
         CheckBox cb4 = findViewById(R.id.checkBox4);
         CheckBox cb5 = findViewById(R.id.checkBox5);
         CheckBox cb6 = findViewById(R.id.checkBox6);
 
-        getUserEmail();
+        getUserEmail(); // Это who? Узнаем логин для формирования зароса
 
-        JSONobject = new Gson().toJson(email);
+        JSONobject = new Gson().toJson(email); //ToDo: Заменить GSON библиотеку на другую
 
-        switch(view.getId()) {
+        switch(view.getId()) { // Да здравствуют костыли, отправка вместо полноценного пакета символа в JSON
 
             case R.id.checkBox1:
                 if(cb1.isChecked()){
@@ -245,14 +245,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
+// КОД ПРОЕРКИ ДОСТУПНОСТИ СЕРВЕРА + ОТПРАВКИ JSON ОБЪЕКТА
     public void onSendClick(View v){
-        getUserEmail();
-        try{
-            if(user != null){
-                new GetData(this, type, JSONobject, mon, tue, wed, thu, fri, sat).execute();
-                Thread.sleep(500);
-                if(Global.error_code==200){
+        getUserEmail(); // Получаем mail пользователя (типо его логин в системе баз данных)
+        try{ // try\catch на случай обсера связи с сервером, иначе все полетит в тар-тарары
+            if(user != null){ // Проверяем авторизован ли пользователь в системе
+                new GetData(this, type, JSONobject, mon, tue, wed, thu, fri, sat).execute(); //емае страшно, формируем запрос
+                Thread.sleep(500); // КОСТЫЛЬ!!! Надо думать что делать, пол секунды простоя ядра ToDo: Придумать как использовать ассинхронный процессинг
+                if(Global.error_code==200){ // Код: 200 - все ок, код 500 - сервер не доступен
                     Toast.makeText(MainActivity.this,"Успешно!", Toast.LENGTH_SHORT).show();
                 }else{Toast.makeText(MainActivity.this,"Повторите попытку", Toast.LENGTH_SHORT).show();}
             }
