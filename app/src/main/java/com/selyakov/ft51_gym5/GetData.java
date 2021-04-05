@@ -10,6 +10,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -42,7 +43,7 @@ public class GetData extends AsyncTask {
         HttpURLConnection connection = null; // Открываем поток для сервера
         String[] params = {type,mon,tue,wed,thu,fri,sat};
         try { // Без try\catch в ассинхронке никуда
-            Log.d("Info:","Start connection..."); // Дебаг
+            //Log.d("Info:","Start connection..."); // Дебаг
             connection = (HttpURLConnection) new URL(link).openConnection(); // Открываем новый поток
 
             connection.setRequestMethod("POST"); // Задаем ПОСТ запрос на сервер
